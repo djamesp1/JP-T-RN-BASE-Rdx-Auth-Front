@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "tst-2",
-    "slug": "tst-2",
+    "name": "JP-T-RN-BASE-Rdx-Goo-Front",
+    "slug": "JP-T-RN-BASE-Rdx-Goo-Front",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
