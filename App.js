@@ -5,16 +5,18 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Provider } from "react-redux";
 
 import store from "./src/store";
+import { setNavigator } from "./src/navigationRef";
 import AccountScreen from "./src/screens/AccountScreen";
 import ScreenOne from "./src/screens/ScreenOne";
 import SigninScreen from "./src/screens/SigninScreen";
 import SignupScreen from "./src/screens/SignupScreen";
+import ResolveAuthScreen from "./src/screens/ResolveAuthScreen";
 
 const switchNavigator = createSwitchNavigator({
-  // ResolveAuth: ResolveAuthScreen,
+  ResolveAuth: ResolveAuthScreen,
   loginFlow: createStackNavigator({
-    Signup: SignupScreen,
     Signin: SigninScreen,
+    Signup: SignupScreen,
   }),
   mainFlow: createBottomTabNavigator({
     One: ScreenOne,
@@ -27,7 +29,11 @@ const App = createAppContainer(switchNavigator);
 export default () => {
   return (
     <Provider store={store}>
-      <App />
+      <App
+        ref={(navigator) => {
+          setNavigator(navigator);
+        }}
+      />
     </Provider>
   );
 };

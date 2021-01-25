@@ -1,33 +1,50 @@
-import React from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
+import React, { Component } from "react";
+import { View, StyleSheet } from "react-native";
+import { connect } from "react-redux";
+import * as actions from "../actions/auth_actions";
+// import * as actions from "../actions/auth_actions";
+
 import { NavigationEvents } from "react-navigation";
+// import { Context as AuthContext } from '../context/AuthContext';
+import AuthForm from "../compos/AuthForm";
+import NavLink from "../compos/NavLink";
 
-// import { Button } from 'react-native-elements';
-import { SafeAreaView } from "react-navigation";
-// import Spacer from '../components/Spacer';
-// import { FontAwesome } from '@expo/vector-icons';
+class SignupScreen extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        {/* <NavigationEvents onWillBlur={this.props.auth.clearErrorMessage} /> */}
+        <AuthForm
+          headerText="Sign Up for ..."
+          // errorMessage={this.props.auth.errorMessage}
+          submitButtonText="Sign Up"
+          onSubmit={this.props.signup}
+        />
+        <NavLink
+          routeName="Signin"
+          text="Already have an account? Sign in instead!"
+        />
+      </View>
+    );
+  }
+}
 
-const SignupScreen = ({ navigation }) => {
-  return (
-    <>
-      <Text>SignupScreen</Text>
-      <Button
-        title="Go to Signin"
-        onPress={() => navigation.navigate("Signin")}
-      />
-      <Button
-        title="Go to Main flow"
-        onPress={() => navigation.navigate("mainFlow")}
-      />
-    </>
-  );
+SignupScreen.navigationOptions = () => {
+  return {
+    headerShown: false,
+  };
 };
 
-/* SignupScreen.navigationOptions = {
-  title: 'Account',
-  tabBarIcon: <FontAwesome name="gear" size={20} />
-}; */
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    marginBottom: 250,
+  },
+});
 
-const styles = StyleSheet.create({});
+function mapStateToProps({ auth }) {
+  return { token: auth.token };
+}
 
-export default SignupScreen;
+export default connect(mapStateToProps, actions)(SignupScreen);
