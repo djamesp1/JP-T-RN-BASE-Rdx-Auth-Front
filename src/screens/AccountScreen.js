@@ -1,19 +1,44 @@
-import React, { useContext } from "react";
+import React, { Component } from "react";
 import { View, StyleSheet, Text } from "react-native";
-// import { Button } from 'react-native-elements';
-// import { SafeAreaView } from 'react-navigation';
-// import Spacer from '../components/Spacer';
-// import { FontAwesome } from '@expo/vector-icons';
+import { Button } from "react-native-elements";
+import { SafeAreaView } from "react-navigation";
+import Spacer from "../compos/Spacer";
+import { FontAwesome } from "@expo/vector-icons";
+// import { NavigationEvents } from "react-navigation";
 
-const AccountScreen = () => {
-  return <Text>AccountScreen</Text>;
+import { connect } from "react-redux";
+import * as actions from "../actions/auth_actions";
+
+class AccountScreen extends Component {
+  render() {
+    return (
+      <SafeAreaView forceInset={{ top: "always" }}>
+        <Text style={{ fontSize: 24 }}>AccountScreen</Text>
+        <Spacer>
+          <Button title="Sign Out" onPress={this.props.signout} />
+        </Spacer>
+      </SafeAreaView>
+    );
+  }
+}
+
+AccountScreen.navigationOptions = () => {
+  return {
+    title: "JP-Account",
+    tabBarIcon: <FontAwesome name="user" size={20} />,
+  };
 };
 
-/* AccountScreen.navigationOptions = {
-  title: 'Account',
-  tabBarIcon: <FontAwesome name="gear" size={20} />
-}; */
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    marginBottom: 250,
+  },
+});
 
-const styles = StyleSheet.create({});
+function mapStateToProps({ auth }) {
+  return { token: auth.token };
+}
 
-export default AccountScreen;
+export default connect(mapStateToProps, actions)(AccountScreen);

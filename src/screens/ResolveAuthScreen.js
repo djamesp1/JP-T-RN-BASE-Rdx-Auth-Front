@@ -5,7 +5,7 @@ import * as actions from '../actions/auth_actions';
 
 class ResolveAuthScreen extends Component {
   componentDidMount() {
-    this.props.login();
+    this.props.tryLocalSignIn();
   }
 
   render() {

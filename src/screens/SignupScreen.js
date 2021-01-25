@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
-import { connect } from "react-redux";
-import * as actions from "../actions/auth_actions";
-// import * as actions from "../actions/auth_actions";
+import React, { Component } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import Spacer from '../compos/Spacer';
+import { connect } from 'react-redux';
+import * as actions from '../actions/auth_actions';
 
-import { NavigationEvents } from "react-navigation";
-// import { Context as AuthContext } from '../context/AuthContext';
-import AuthForm from "../compos/AuthForm";
-import NavLink from "../compos/NavLink";
+import { NavigationEvents } from 'react-navigation';
+import AuthForm from '../compos/AuthForm';
+import NavLink from '../compos/NavLink';
 
 class SignupScreen extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView forceInset={{ top: 'always' }}>
         {/* <NavigationEvents onWillBlur={this.props.auth.clearErrorMessage} /> */}
         <AuthForm
           headerText="Sign Up for ..."
@@ -24,7 +24,7 @@ class SignupScreen extends Component {
           routeName="Signin"
           text="Already have an account? Sign in instead!"
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -38,7 +38,7 @@ SignupScreen.navigationOptions = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     marginBottom: 250,
   },
 });

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Text, Button, Input } from "react-native-elements";
-import { log } from "react-native-reanimated";
-import { login } from "../actions/auth_actions";
 import Spacer from "./Spacer";
 
-const AuthForm = ({ headerText, onSubmit, submitButtonText }) => {
+const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,9 +28,9 @@ const AuthForm = ({ headerText, onSubmit, submitButtonText }) => {
         autoCapitalize="none"
         autoCorrect={false}
       />
-      {/* {errorMessage ? (
+      {errorMessage ? (
         <Text style={styles.errorMessage}>{errorMessage}</Text>
-      ) : null} */}
+      ) : null}
       <Spacer>
         <Button
           title={submitButtonText}
