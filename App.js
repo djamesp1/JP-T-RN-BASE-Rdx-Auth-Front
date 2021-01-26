@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Provider } from "react-redux";
 
 import store from "./src/store";
-import { setNavigator } from "./src/navigationRef";
-import AccountScreen from "./src/screens/AccountScreen";
+import { setNavigator } from "./src/utils/navigationRef";
+import AccountScreen from "./src/screens/authScreens/AccountScreen";
 import ScreenOne from "./src/screens/ScreenOne";
-import SigninScreen from "./src/screens/SigninScreen";
-import SignupScreen from "./src/screens/SignupScreen";
-import ResolveAuthScreen from "./src/screens/ResolveAuthScreen";
+import SigninScreen from "./src/screens/authScreens/SigninScreen";
+import SignupScreen from "./src/screens/authScreens/SignupScreen";
+import ResolveAuthScreen from "./src/screens/authScreens/ResolveAuthScreen";
 
 const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,

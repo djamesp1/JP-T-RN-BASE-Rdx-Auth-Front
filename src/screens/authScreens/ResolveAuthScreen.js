@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { View, Text } from 'react-native';
-import { connect } from 'react-redux';
-import * as actions from '../actions/auth_actions';
+import { connect } from "react-redux";
+import * as actions from "../../actions";
 
 class ResolveAuthScreen extends Component {
   componentDidMount() {

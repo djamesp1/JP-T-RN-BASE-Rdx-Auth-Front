@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Button } from "react-native-elements";
 import { SafeAreaView } from "react-navigation";
-import Spacer from "../compos/Spacer";
+import Spacer from "../../compos/Spacer";
 import { FontAwesome } from "@expo/vector-icons";
 // import { NavigationEvents } from "react-navigation";
 
 import { connect } from "react-redux";
-import * as actions from "../actions/auth_actions";
+import * as actions from "../../actions/auth_actions";
 
 class AccountScreen extends Component {
   render() {

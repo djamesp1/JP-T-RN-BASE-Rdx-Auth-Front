@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-navigation";
-import Spacer from "../compos/Spacer";
+import Spacer from "../../compos/Spacer";
 import { connect } from "react-redux";
-import * as actions from "../actions/auth_actions";
+import * as actions from "../../actions/auth_actions";
 
 import { NavigationEvents } from "react-navigation";
-import AuthForm from "../compos/AuthForm";
-import NavLink from "../compos/NavLink";
+import AuthForm from "../../compos/AuthForm";
+import NavLink from "../../compos/NavLink";
 
 class SigninScreen extends Component {
   render() {

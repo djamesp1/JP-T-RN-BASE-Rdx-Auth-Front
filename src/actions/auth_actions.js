@@ -6,7 +6,7 @@ import {
   ADD_ERROR,
   CLEAR_ERROR_MSG,
 } from "./types";
-import { navigate } from "../navigationRef";
+import { navigate } from "../utils/navigationRef";
 import apiLink from "../api/apiLink";
 
 export const tryLocalSignIn = () => async (dispatch) => {
