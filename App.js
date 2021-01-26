@@ -4,7 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Provider } from "react-redux";
 
-import store from "./src/store";
+import store from "./src/utils/store";
 import { setNavigator } from "./src/utils/navigationRef";
 import AccountScreen from "./src/screens/authScreens/AccountScreen";
 import ScreenOne from "./src/screens/ScreenOne";

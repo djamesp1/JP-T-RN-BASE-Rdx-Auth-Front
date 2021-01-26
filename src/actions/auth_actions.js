@@ -7,7 +7,7 @@ import {
   CLEAR_ERROR_MSG,
 } from "./types";
 import { navigate } from "../utils/navigationRef";
-import apiLink from "../api/apiLink";
+import apiLink from "../utils/api/apiLink";
 
 export const tryLocalSignIn = () => async (dispatch) => {
   let token = await AsyncStorage.getItem("token");
@@ -38,10 +38,10 @@ export const signin = ({ email, password }) => async (dispatch) => {
     dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
     navigate("One");
   } catch (err) {
-    console.log("Something went wrong with sign up");
+    console.log("Something went wrong with sign in");
     dispatch({
       type: ADD_ERROR,
-      payload: "Something went wrong with sign up",
+      payload: "Something went wrong with sign in",
     });
   }
 };
