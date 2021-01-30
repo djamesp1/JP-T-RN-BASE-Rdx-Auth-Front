@@ -13,8 +13,7 @@ import SigninScreen from "./src/screens/authScreens/SigninScreen";
 import SignupScreen from "./src/screens/authScreens/SignupScreen";
 import ResolveAuthScreen from "./src/screens/authScreens/ResolveAuthScreen";
 
-// import ThingListScreen from "./src/screens/thingScreens/ThingListScreen";
-import ThingListScreen from "./src/screens/thingScreens/ThingListScreen-FxnCo";
+import ThingListScreen from "./src/screens/thingScreens/ThingListScreen";
 import ThingDetailScreen from "./src/screens/thingScreens/ThingDetailScreen";
 // import ThingCreateScreen from "./src/screens/thingScreens/ThingCreateScreen";
 
