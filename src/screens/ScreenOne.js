@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps({ auth }) {
-  return { token: auth.token };
+  return { auth };
 }
 
 export default connect(mapStateToProps, actions)(ScreenOne);
