@@ -13,7 +13,7 @@ export const tryLocalSignIn = () => async (dispatch) => {
   let token = await AsyncStorage.getItem("token");
   if (token) {
     dispatch({ type: LOGIN_SUCCESS, payload: token });
-    navigate("One");
+    navigate("ThingList");
   } else {
     navigate("Signup");
   }
@@ -36,7 +36,7 @@ export const signin = ({ email, password }) => async (dispatch) => {
     console.log(response.data.token);
     await AsyncStorage.setItem("token", response.data.token);
     dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
-    navigate("One");
+    navigate("ThingList");
   } catch (err) {
     console.log("Something went wrong with sign in");
     dispatch({
@@ -53,7 +53,7 @@ export const signup = ({ email, password }) => async (dispatch) => {
     console.log(response.data.token);
     await AsyncStorage.setItem("token", response.data.token);
     dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
-    navigate("One");
+    navigate("ThingList");
   } catch (err) {
     console.log("Something went wrong with sign up");
     dispatch({

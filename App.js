@@ -15,7 +15,7 @@ import ResolveAuthScreen from "./src/screens/authScreens/ResolveAuthScreen";
 
 import ThingListScreen from "./src/screens/thingScreens/ThingListScreen";
 import ThingDetailScreen from "./src/screens/thingScreens/ThingDetailScreen";
-// import ThingCreateScreen from "./src/screens/thingScreens/ThingCreateScreen";
+import ThingCreateScreen from "./src/screens/thingScreens/ThingCreateScreen";
 
 const thingListFlow = createStackNavigator({
   ThingList: ThingListScreen,
@@ -35,8 +35,8 @@ const switchNavigator = createSwitchNavigator({
   }),
   mainFlow: createBottomTabNavigator({
     thingListFlow,
-    // ThingCreate: ThingCreateScreen,
-    One: ScreenOne,
+    ThingCreate: ThingCreateScreen,
+    // One: ScreenOne,
     Account: AccountScreen,
   }),
 });
