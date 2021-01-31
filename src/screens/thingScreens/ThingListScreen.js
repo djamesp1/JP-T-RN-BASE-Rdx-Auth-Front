@@ -10,6 +10,7 @@ import { fetchThings } from "../../actions/thing_actions";
 const ThingListScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const things = useSelector((state) => state.things);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     dispatch(fetchThings());
@@ -18,6 +19,7 @@ const ThingListScreen = ({ navigation }) => {
   return (
     <>
       <Text>Things Test</Text>
+      <Text>User: {user.email}</Text>
       <SafeAreaView forceInset={{ top: "always" }}>
         <FlatList
           data={things}

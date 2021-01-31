@@ -7,4 +7,4 @@ export const CLEAR_ERROR_MSG = "clear_error_msg";
 export const FETCH_THINGS = "fetch_things";
 export const CREATE_THING = "create_thing";
 
-export const FETCH_USERS = "fetch_users";
+export const FETCHED_USER = "fetched_user";

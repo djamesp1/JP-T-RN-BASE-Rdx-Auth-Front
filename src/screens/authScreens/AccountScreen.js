@@ -14,6 +14,7 @@ class AccountScreen extends Component {
     return (
       <SafeAreaView forceInset={{ top: "always" }}>
         <Text style={{ fontSize: 24 }}>AccountScreen</Text>
+        <Text style={{ fontSize: 24 }}>User: {this.props.auth.user.email}</Text>
         <Spacer>
           <Button title="Sign Out" onPress={this.props.signout} />
         </Spacer>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps({ auth }) {
-  return { token: auth.token };
+  return { auth };
 }
 
 export default connect(mapStateToProps, actions)(AccountScreen);

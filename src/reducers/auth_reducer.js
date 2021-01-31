@@ -4,16 +4,24 @@ import {
   SIGNOUT,
   ADD_ERROR,
   CLEAR_ERROR_MSG,
+  FETCHED_USER,
 } from "../actions/types";
 
-export default function (state = {}, action) {
+const initialState = {
+  token: null,
+  user: {},
+};
+
+export default function (state = initialState, action) {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      return { token: action.payload };
+      return { ...state, token: action.payload };
     /* case LOGIN_FAIL:
       return { token: null }; */
+    case FETCHED_USER:
+      return { ...state, user: action.payload };
     case SIGNOUT:
-      return { token: null };
+      return { ...state, token: null };
     case ADD_ERROR:
       return { ...state, errorMessage: action.payload };
     case CLEAR_ERROR_MSG:

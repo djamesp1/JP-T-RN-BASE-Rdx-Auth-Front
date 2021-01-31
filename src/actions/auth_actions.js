@@ -5,6 +5,7 @@ import {
   SIGNOUT,
   ADD_ERROR,
   CLEAR_ERROR_MSG,
+  FETCHED_USER,
 } from "./types";
 import { navigate } from "../utils/navigationRef";
 import apiLink from "../utils/api/apiLink";
@@ -12,7 +13,10 @@ import apiLink from "../utils/api/apiLink";
 export const tryLocalSignIn = () => async (dispatch) => {
   let token = await AsyncStorage.getItem("token");
   if (token) {
-    dispatch({ type: LOGIN_SUCCESS, payload: token });
+    await dispatch({ type: LOGIN_SUCCESS, payload: token });
+    const fetchedUser = await apiLink.get("/user");
+    // console.log("fetchedUser res: ", fetchedUser.data[0]);
+    await dispatch({ type: FETCHED_USER, payload: fetchedUser.data[0] });
     navigate("ThingList");
   } else {
     navigate("Signup");
@@ -33,9 +37,12 @@ export const signin = ({ email, password }) => async (dispatch) => {
   console.log(email, password);
   try {
     const response = await apiLink.post("/signin", { email, password });
-    console.log(response.data.token);
+    // console.log(response.data.token);
     await AsyncStorage.setItem("token", response.data.token);
-    dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
+    await dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
+    const fetchedUser = await apiLink.get("/user");
+    console.log("fetchedUser res: ", fetchedUser.data[0]);
+    await dispatch({ type: FETCHED_USER, payload: fetchedUser.data[0] });
     navigate("ThingList");
   } catch (err) {
     console.log("Something went wrong with sign in");
