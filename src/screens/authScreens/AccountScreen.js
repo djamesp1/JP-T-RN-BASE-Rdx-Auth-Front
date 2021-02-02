@@ -10,6 +10,10 @@ import { connect } from "react-redux";
 import * as actions from "../../actions/auth_actions";
 
 class AccountScreen extends Component {
+  static navigationOptions = {
+    title: "Map",
+  };
+
   render() {
     return (
       <SafeAreaView forceInset={{ top: "always" }}>

@@ -16,14 +16,30 @@ import ResolveAuthScreen from "./src/screens/authScreens/ResolveAuthScreen";
 import ThingListScreen from "./src/screens/thingScreens/ThingListScreen";
 import ThingDetailScreen from "./src/screens/thingScreens/ThingDetailScreen";
 import ThingCreateScreen from "./src/screens/thingScreens/ThingCreateScreen";
+import ThingEditScreen from "./src/screens/thingScreens/ThingEditScreen";
 
-const thingListFlow = createStackNavigator({
-  ThingList: ThingListScreen,
-  ThingDetail: ThingDetailScreen,
-});
+const thingListFlow = createStackNavigator(
+  {
+    ThingList: ThingListScreen,
+    ThingDetail: ThingDetailScreen,
+    ThingEdit: ThingEditScreen,
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "chocolate",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    },
+  }
+);
 
+// Below is options for Tab only.  Hdr options are configured in ThingListScreen
 thingListFlow.navigationOptions = {
-  title: "Things",
+  title: "Things-Tab",
   tabBarIcon: <FontAwesome name="th-list" size={20} />,
 };
 

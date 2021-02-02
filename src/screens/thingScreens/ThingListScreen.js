@@ -3,7 +3,7 @@ import { StyleSheet, Text, FlatList, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import { NavigationEvents } from "react-navigation";
 import { ListItem, Icon } from "react-native-elements";
-
+import { FontAwesome } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchThings } from "../../actions/thing_actions";
 
@@ -48,7 +48,14 @@ const ThingListScreen = ({ navigation }) => {
 };
 
 ThingListScreen.navigationOptions = {
-  title: "Things",
+  title: "Thingsssss",
+  /* headerStyle: {
+    backgroundColor: "#f4511e",
+  },
+  headerTintColor: "#fff",
+  headerTitleStyle: {
+    fontWeight: "bold",
+  }, */
 };
 
 const styles = StyleSheet.create({});

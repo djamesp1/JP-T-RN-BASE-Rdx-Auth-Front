@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Button } from "react-native-elements";
+
 import { SafeAreaView } from "react-navigation";
 import Spacer from "../../compos/Spacer";
-import { FontAwesome } from "@expo/vector-icons";
-import { NavigationEvents } from "react-navigation";
 import { useDispatch, useSelector } from "react-redux";
 
 const ThingDetailScreen = ({ navigation }) => {
@@ -14,43 +14,44 @@ const ThingDetailScreen = ({ navigation }) => {
 
   return (
     <>
-      <Text style={{ fontSize: 48 }}>{thing.thingName}</Text>
-      <Text style={{ fontSize: 48 }}>{thing.locations[0]}</Text>
+      {thing ? (
+        <>
+          <View style={{ alignItems: "center" }}>
+            <Text style={{ fontSize: 48 }}>{thing.thingName}</Text>
+            <Text style={{ fontSize: 48 }}>{thing.locations[0]}</Text>
+          </View>
+          <View style={styles.btnContainerStyle}>
+            <Button
+              title="Edit"
+              buttonStyle={styles.buttonStyle}
+              onPress={() =>
+                navigation.navigate("ThingEdit", {
+                  _id,
+                  name: thing.thingName,
+                  location: thing.locations[0],
+                })
+              }
+            />
+          </View>
+        </>
+      ) : (
+        <Text>NoThing</Text>
+      )}
     </>
   );
 };
 
-const styles = StyleSheet.create({});
-
-export default ThingDetailScreen;
-
-/* class ThingDetailScreen extends Component {
-  render() {
-    return (
-      <SafeAreaView forceInset={{ top: "always" }}>
-        <Text style={{ fontSize: 24 }}>ThingDetailScreen</Text>
-      </SafeAreaView>
-    );
-  }
-}
-
-ThingDetailScreen.navigationOptions = () => {
-  return {
-    title: "ThingDetail",
-    tabBarIcon: <FontAwesome name="plus" size={20} />,
-  };
-};
-
 const styles = StyleSheet.create({
-  container: {
+  btnContainerStyle: {
     flex: 1,
-    justifyContent: "center",
-    marginBottom: 250,
+    alignItems: "center",
+  },
+  buttonStyle: {
+    backgroundColor: "steelblue",
+    height: 50,
+    width: 200,
+    borderRadius: 20,
   },
 });
 
-function mapStateToProps({ auth, things }) {
-  return { auth, things };
-}
-
-export default connect(mapStateToProps, actions)(ThingDetailScreen); */
+export default ThingDetailScreen;
