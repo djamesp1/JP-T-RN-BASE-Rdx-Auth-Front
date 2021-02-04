@@ -1,23 +1,17 @@
-import React, { Component } from "react";
-// import { View, Text } from 'react-native';
-import { connect } from "react-redux";
-import * as actions from "../../actions";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { tryLocalSignIn } from "../../actions/auth_actions";
 
-class ResolveAuthScreen extends Component {
-  componentDidMount() {
-    this.props.tryLocalSignIn();
-  }
+const ResolveAuthScreen = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(tryLocalSignIn());
+  }, []);
 
-  render() {
-    return null;
-  }
-}
+  return null;
+};
 
-function mapStateToProps({ auth }) {
-  return { token: auth.token };
-}
-
-export default connect(mapStateToProps, actions)(ResolveAuthScreen);
+export default ResolveAuthScreen;
 
 // Purpose of this screen is to render first(invisibly), on startup
 // This screen returns null, meaning nothing displays !!

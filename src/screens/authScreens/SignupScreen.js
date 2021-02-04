@@ -1,50 +1,46 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import Spacer from "../../compos/Spacer";
-import { connect } from "react-redux";
-import * as actions from "../../actions/auth_actions";
-
 import { NavigationEvents } from "react-navigation";
+import { useDispatch, useSelector } from "react-redux";
 import AuthForm from "../../compos/AuthForm";
 import NavLink from "../../compos/NavLink";
+import { signup, clearErrorMessage } from "../../actions/auth_actions";
 
-class SignupScreen extends Component {
-  render() {
-    return (
-      <SafeAreaView forceInset={{ top: "always" }}>
-        {/* <NavigationEvents onWillBlur={this.props.auth.clearErrorMessage} /> */}
-        <AuthForm
-          headerText="Sign Up for ..."
-          // errorMessage={this.props.auth.errorMessage}
-          submitButtonText="Sign Up"
-          onSubmit={this.props.signup}
-        />
-        <NavLink
-          routeName="Signin"
-          text="Already have an account? Sign in instead!"
-        />
-      </SafeAreaView>
-    );
-  }
-}
-
-SignupScreen.navigationOptions = () => {
-  return {
-    headerShown: false,
+const SignupScreen = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const errorMsg = useSelector((state) => state.auth.errorMessage);
+  const attemptSignup = (email, password) => {
+    console.log("email :", email, "pwd :", password);
+    dispatch(signup({ email: email, password: password }));
   };
+  const clrError = () => {
+    dispatch(clearErrorMessage());
+  };
+
+  return (
+    <SafeAreaView forceInset={{ top: "always" }}>
+      <NavigationEvents onWillBlur={clrError} />
+      <AuthForm
+        headerText="Sign Up for ..."
+        errorMessage={errorMsg}
+        onSubmit={attemptSignup}
+        submitButtonText="Sign Up"
+      />
+      <NavLink
+        routeName="Signin"
+        text="Already have an account? Sign in instead!"
+      />
+    </SafeAreaView>
+  );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    marginBottom: 250,
-  },
-});
+SignupScreen.navigationOptions = {
+  headerShown: false,
+};
 
-function mapStateToProps({ auth }) {
-  return { token: auth.token };
-}
+const styles = StyleSheet.create({});
 
-export default connect(mapStateToProps, actions)(SignupScreen);
+export default SignupScreen;

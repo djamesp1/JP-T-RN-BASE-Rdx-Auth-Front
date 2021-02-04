@@ -34,14 +34,14 @@ export const clearErrorMessage = () => async (dispatch) => {
 };
 
 export const signin = ({ email, password }) => async (dispatch) => {
-  console.log(email, password);
+  // console.log(email, password);
   try {
     const response = await apiLink.post("/signin", { email, password });
     // console.log(response.data.token);
     await AsyncStorage.setItem("token", response.data.token);
     await dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
     const fetchedUser = await apiLink.get("/user");
-    console.log("fetchedUser res: ", fetchedUser.data[0]);
+    // console.log("fetchedUser res: ", fetchedUser.data[0]);
     await dispatch({ type: FETCHED_USER, payload: fetchedUser.data[0] });
     navigate("ThingList");
   } catch (err) {
@@ -54,10 +54,10 @@ export const signin = ({ email, password }) => async (dispatch) => {
 };
 
 export const signup = ({ email, password }) => async (dispatch) => {
-  console.log(email, password);
+  // console.log(email, password);
   try {
     const response = await apiLink.post("/signup", { email, password });
-    console.log(response.data.token);
+    // console.log(response.data.token);
     await AsyncStorage.setItem("token", response.data.token);
     dispatch({ type: LOGIN_SUCCESS, payload: response.data.token });
     navigate("ThingList");

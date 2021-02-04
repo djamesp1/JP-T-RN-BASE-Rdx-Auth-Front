@@ -10,6 +10,7 @@ import {
 const initialState = {
   token: null,
   user: {},
+  errorMessage: "",
 };
 
 export default function (state = initialState, action) {

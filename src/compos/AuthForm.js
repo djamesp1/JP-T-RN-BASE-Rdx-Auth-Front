@@ -43,7 +43,7 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
         <Button
           title={submitButtonText}
           onPress={() => {
-            onSubmit({ email, password });
+            onSubmit(email, password);
             setActIndy(true);
           }}
         />

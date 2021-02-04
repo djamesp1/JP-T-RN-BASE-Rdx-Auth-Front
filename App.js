@@ -52,7 +52,7 @@ const switchNavigator = createSwitchNavigator({
   mainFlow: createBottomTabNavigator({
     thingListFlow,
     ThingCreate: ThingCreateScreen,
-    // One: ScreenOne,
+    One: ScreenOne,
     Account: AccountScreen,
   }),
 });
